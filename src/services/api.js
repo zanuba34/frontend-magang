@@ -66,3 +66,4 @@ export const api = {
   put: (path, body, opts={}) => apiRequest(path, { ...opts, method: "PUT", body }),
   del: (path, opts={}) => apiRequest(path, { ...opts, method: "DELETE" }),
 };
+
