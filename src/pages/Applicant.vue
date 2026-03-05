@@ -827,4 +827,35 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   transition: .2s ease;
 }
 .modal-btn:hover{ transform: translateY(-1px); }
+@media (max-width:600px){
+
+  .top{
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px 18px;
+    gap: 6px;
+  }
+
+  .brand{
+    width:100%;
+  }
+
+  .right{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+  }
+
+  .user{
+    font-size:12px;
+  }
+
+  .logout{
+    padding:6px 12px;
+    font-size:12px;
+  }
+
+}
 </style>
