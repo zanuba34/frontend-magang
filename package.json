@@ -6,7 +6,7 @@
   "scripts": {
   "dev": "vite",
   "build": "vite build",
-  "start": "serve -s dist --listen $PORT"
+  "start": "npm run build && serve -s dist --listen $PORT"
 },
   "dependencies": {
     "vue": "^3.4.0",
