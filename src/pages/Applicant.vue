@@ -884,4 +884,31 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   }
 
 }
+.top{
+  height:56px;
+  display:flex;
+  align-items:center;
+  padding: 0 22px;
+  background: #2f5bd3;
+  color: white;
+}
+
+/* dorong logout ke kanan */
+.right{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+@media (max-width:600px){
+
+  .user{
+    display:none; /* sembunyikan email + applicant */
+  }
+
+  .right{
+    margin-left:auto; /* paksa logout ke kanan */
+  }
+
+}
 </style>
