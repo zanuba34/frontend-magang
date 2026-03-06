@@ -2,12 +2,15 @@
   <div class="wrap" :class="{ leaving }">
     <!-- TOPBAR -->
     <header class="top">
-  <div class="brand">
-    <img src="../assets/edukarya.png" class="brandLogo" alt="Edukarya" />
-  </div>
+      <div class="brand">
+        <img src="../assets/edukarya.png" class="brandLogo" alt="Edukarya" />
+      </div>
 
-  <button class="logout" @click="doLogout">Log out</button>
-</header>
+      <div class="right">
+        <span class="user">{{ user.email }} • APPLICANT</span>
+        <button class="logout" @click="doLogout">Log out</button>
+      </div>
+    </header>
 
     <!-- MAIN -->
     <main class="container">
@@ -854,13 +857,5 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
     font-size:12px;
   }
 
-}
-.top{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  height: 64px;
-  background: #3b5ccc;
 }
 </style>
