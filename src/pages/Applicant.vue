@@ -858,4 +858,30 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   }
 
 }
+/* ===== MOBILE HEADER CLEAN ===== */
+@media (max-width:600px){
+
+  /* sembunyikan email + applicant */
+  .user{
+    display:none;
+  }
+
+  /* header tetap horizontal */
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  /* logout tetap di kanan */
+  .right{
+    margin-left:auto;
+  }
+
+  /* logo sedikit lebih kecil biar rapi */
+  .brandLogo{
+    height:24px;
+  }
+
+}
 </style>
