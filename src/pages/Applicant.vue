@@ -2,15 +2,12 @@
   <div class="wrap" :class="{ leaving }">
     <!-- TOPBAR -->
     <header class="top">
-      <div class="brand">
-        <img src="../assets/edukarya.png" class="brandLogo" alt="Edukarya" />
-      </div>
+  <div class="brand">
+    <img src="../assets/edukarya.png" class="brandLogo" alt="Edukarya" />
+  </div>
 
-      <div class="right">
-        <span class="user">{{ user.email }} • APPLICANT</span>
-        <button class="logout" @click="doLogout">Log out</button>
-      </div>
-    </header>
+  <button class="logout" @click="doLogout">Log out</button>
+</header>
 
     <!-- MAIN -->
     <main class="container">
