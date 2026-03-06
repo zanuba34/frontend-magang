@@ -7,7 +7,8 @@
       </div>
 
       <div class="right">
-        <span class="user">{{ user.email }} • APPLICANT</span>
+        <!-- Email dihilangkan di mobile, tapi tetap ada di desktop -->
+        <span class="user desktop-only">{{ user.email }} • APPLICANT</span>
         <button class="logout" @click="doLogout">Log out</button>
       </div>
     </header>
@@ -132,9 +133,7 @@
         </div>
 
         <div class="actions">
-          <!-- ✅ FIX: Batal disamain satu keluarga sama Submit -->
           <button class="primary secondary" type="button" @click="closeForm">Batal</button>
-
           <button class="primary" type="button" @click="submitForm" :disabled="loading">
             {{ loading ? "Mengirim..." : "Submit" }}
           </button>
@@ -142,7 +141,7 @@
       </div>
     </div>
 
-    <!-- ✅ MODAL NOTIFIKASI (STYLE SAMA KAYAK LOGIN.VUE) -->
+    <!-- MODAL NOTIFIKASI -->
     <div
       class="modal-backdrop"
       v-if="modal.show"
@@ -196,10 +195,10 @@ const toast = ref(false)
 
 const user = reactive({ email: "", role: "" })
 
-// ✅ modal state (copy konsep dari login.vue)
+// modal state
 const modal = reactive({
   show: false,
-  type: "error", // "error" | "info"
+  type: "error",
   title: "Informasi",
   message: ""
 })
@@ -400,8 +399,8 @@ function onPickFollow(e){
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(255,255,255,.90); /* 75% putih */
-  backdrop-filter: blur(2px); /* optional biar soft */
+  background: rgba(255,255,255,.90);
+  backdrop-filter: blur(2px);
   z-index:0;
 }
 
@@ -427,14 +426,27 @@ function onPickFollow(e){
   letter-spacing: .2px;
 }
 
+.brandLogo{
+  height: 30px;
+  object-fit: contain;
+}
+
 .right{
   display:flex;
   align-items:center;
   gap: 14px;
 }
+
 .user{
   font-size: 13px;
   opacity: .95;
+}
+
+/* Sembunyikan user di mobile */
+@media (max-width: 600px) {
+  .user.desktop-only {
+    display: none;
+  }
 }
 
 .logout{
@@ -556,7 +568,6 @@ function onPickFollow(e){
 .primary:hover{ transform: translateY(-2px); filter: brightness(1.03); }
 .primary.disabled{ opacity:.6; cursor:not-allowed; }
 
-/* ✅ FIX: tombol batal (secondary) tapi masih 1 keluarga sama submit */
 .primary.secondary{
   background: rgba(255,255,255,.85);
   color: #1a2e9e;
@@ -718,13 +729,6 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   to{ opacity:1; transform: translateY(0); }
 }
 
-@media (max-width: 900px){
-  .grid{ grid-template-columns: 1fr; }
-}
-.brandLogo{
-  height: 30px;
-  object-fit: contain;
-}
 .hint{
   display:block;
   margin-top:8px;
@@ -733,7 +737,7 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   font-weight:700;
 }
 
-/* ===== MODAL NOTIFIKASI (COPY LOGIN.VUE) ===== */
+/* ===== MODAL NOTIFIKASI ===== */
 .modal-backdrop{
   position: fixed;
   inset: 0;
@@ -827,88 +831,50 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   transition: .2s ease;
 }
 .modal-btn:hover{ transform: translateY(-1px); }
-@media (max-width:600px){
 
-  .top{
-    flex-direction: column;
-    align-items: flex-start;
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .top {
     height: auto;
-    padding: 12px 18px;
-    gap: 6px;
+    padding: 12px 16px;
   }
-
-  .brand{
-    width:100%;
+  
+  .brandLogo {
+    height: 26px;
   }
-
-  .right{
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
+  
+  .right {
+    gap: 8px;
   }
-
-  .user{
-    font-size:12px;
+  
+  .logout {
+    padding: 6px 14px;
+    font-size: 13px;
   }
-
-  .logout{
-    padding:6px 12px;
-    font-size:12px;
+  
+  .heroCard h1 {
+    font-size: 20px;
   }
-
-}
-/* ===== MOBILE HEADER CLEAN ===== */
-@media (max-width:600px){
-
-  /* sembunyikan email + applicant */
-  .user{
-    display:none;
+  
+  .heroCard p {
+    font-size: 14px;
   }
-
-  /* header tetap horizontal */
-  .top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  
+  .card {
+    padding: 16px;
   }
-
-  /* logout tetap di kanan */
-  .right{
-    margin-left:auto;
+  
+  .modal {
+    max-height: 90vh;
+    overflow-y: auto;
   }
-
-  /* logo sedikit lebih kecil biar rapi */
-  .brandLogo{
-    height:24px;
+  
+  .form {
+    grid-template-columns: 1fr;
   }
-
-}
-.top{
-  height:56px;
-  display:flex;
-  align-items:center;
-  padding: 0 22px;
-  background: #2f5bd3;
-  color: white;
-}
-
-/* dorong logout ke kanan */
-.right{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-@media (max-width:600px){
-
-  .user{
-    display:none; /* sembunyikan email + applicant */
-  }
-
-  .right{
-    margin-left:auto; /* paksa logout ke kanan */
-  }
-
 }
 </style>
