@@ -855,4 +855,12 @@ input:focus, select:focus{ border-color: rgba(60,89,193,.45); }
   }
 
 }
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  background: #3b5ccc;
+}
 </style>
